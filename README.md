@@ -1,3 +1,3 @@
-# Solution modèle des exercices 1 & 2 comnbinés. 
+# Application Web Signets
 
-Application Web Signets : structure des composants et formatage.
+Exemple de classe dans le cours 582-4PA à la session Hiver 2022.
