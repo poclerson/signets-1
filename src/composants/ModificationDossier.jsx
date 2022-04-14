@@ -7,10 +7,10 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { TwitterPicker } from 'react-color';
 import { useState } from 'react';
 
-export default function AjoutDossier({ ouvert, setOuvert, gererAjoutDossier }) {
-    const [titre, setTitre] = useState('');
-    const [couverture, setCouverture] = useState('');
-    const [couleur, setCouleur] = useState('#000');
+export default function ModificationDossier({ id, titre_p, couleur_p, couverture_p, ouvert, setOuvert, gererModifierDossier }) {
+    const [titre, setTitre] = useState(titre_p);
+    const [couverture, setCouverture] = useState(couverture_p);
+    const [couleur, setCouleur] = useState(couleur_p);
 
     const gererOuvrir = () => {
         setOuvert(true);
@@ -29,7 +29,7 @@ export default function AjoutDossier({ ouvert, setOuvert, gererAjoutDossier }) {
     function gererSoumettre() {
         // Code qui gère l'ajout dans Firestore
         if(titre.search(/[a-z]{2,}/i) != -1) {
-            gererAjoutDossier(titre, couverture, couleur);
+            gererModifierDossier(titre, couverture, couleur);
             gererFermer();
         }
     }
@@ -37,7 +37,7 @@ export default function AjoutDossier({ ouvert, setOuvert, gererAjoutDossier }) {
     return (
         <div>
             <Dialog open={ouvert} onClose={gererFermer}>
-                <DialogTitle>Ajouter un dossier</DialogTitle>
+                <DialogTitle>Modifier ce dossier</DialogTitle>
                 <DialogContent>
                     {/* Titre du dossier */}
                     <TextField
@@ -49,6 +49,7 @@ export default function AjoutDossier({ ouvert, setOuvert, gererAjoutDossier }) {
                         fullWidth
                         variant="standard"
                         onChange={e => setTitre(e.target.value)}
+                        value={titre_p}
                     />
                     {/* URL de l'image */}
                     <TextField
